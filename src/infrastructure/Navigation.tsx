@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {HomeScreen} from '../screens/HomeScreen';
+import {HomeScreenNative} from '../screens/HomeScreenNative';
 
 export const Navigation = () => {
   return (
@@ -32,14 +32,14 @@ const BottomTab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Discovery"
       screenOptions={{
         tabBarActiveTintColor: '#fff',
         tabBarStyle: {backgroundColor: '#000000'},
       }}>
       <BottomTab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeScreenNative}
         options={{
           headerShown: false,
           tabBarIcon: ({color, size}) => (
@@ -49,8 +49,9 @@ const BottomTabNavigator = () => {
       />
       <BottomTab.Screen
         name="Discovery"
-        component={HomeScreen}
+        component={HomeScreenNative}
         options={{
+          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="compass" color={color} size={size} />
           ),
@@ -58,7 +59,7 @@ const BottomTabNavigator = () => {
       />
       <BottomTab.Screen
         name="Activity"
-        component={HomeScreen}
+        component={HomeScreenNative}
         options={{
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="timer" color={color} size={size} />
@@ -67,7 +68,7 @@ const BottomTabNavigator = () => {
       />
       <BottomTab.Screen
         name="Bookmarks"
-        component={HomeScreen}
+        component={HomeScreenNative}
         options={{
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="bookmark" color={color} size={size} />
@@ -76,7 +77,7 @@ const BottomTabNavigator = () => {
       />
       <BottomTab.Screen
         name="Profile"
-        component={HomeScreen}
+        component={HomeScreenNative}
         options={{
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons
