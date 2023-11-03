@@ -1,10 +1,34 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {TopHeader} from '../components/TopHeader';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {Question} from '../components/Question';
 import {ActionButtons} from '../components/ActionButtons';
 
 export const HomeScreenNative = () => {
+  // const [isLoading, setLoading] = useState(true);
+  // const [data, setData] = useState<Movie[]>([]);
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState();
+
+  const url = 'https://cross-platform.rp.devfactory.com/for_you';
+
+  const getTeachToks = async () => {
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+      setData(json);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+      console.log(data);
+    }
+  };
+
+  useEffect(() => {
+    getTeachToks();
+  }, []);
+
   return (
     <ImageBackground
       resizeMode="cover"
@@ -16,7 +40,13 @@ export const HomeScreenNative = () => {
         </View>
 
         <View style={styles.middle}>
-          <Text style={{fontSize: 30}}>What led to the Compromise of 1850</Text>
+          {isLoading ? (
+            <Text style={{fontSize: 30}}>Loading</Text>
+          ) : (
+            <Text style={{fontSize: 30}}>
+              {JSON.stringify(data.options[0].id)}
+            </Text>
+          )}
         </View>
 
         <View style={styles.bottom}>
@@ -72,7 +102,7 @@ const styles = StyleSheet.create({
   },
   middle: {
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     flex: 0.3,
   },
   bottom: {

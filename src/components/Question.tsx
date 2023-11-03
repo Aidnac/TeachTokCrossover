@@ -12,11 +12,12 @@ export const Question = () => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 15,
     margin: 10,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    backgroundColor: 'rgba(255,255,255,0.3)',
+    borderRadius: 10,
+    backgroundColor: 'rgba(255,255,255,0.5)',
   },
   question: {color: '#fff', fontSize: 18},
 });
