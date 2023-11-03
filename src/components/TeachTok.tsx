@@ -10,7 +10,9 @@ export const TeachTock = ({prop}) => {
     <ImageBackground
       resizeMode="cover"
       style={styles.image}
-      source={require('../../assets/ferry.png')}>
+      source={{
+        uri: 'https://cross-platform-rwa.rp.devfactory.com/images/5059%20-%20Free%20Soil%20Party.png',
+      }}>
       <View style={styles.container}>
         <View style={styles.top}>
           <TopHeader />
