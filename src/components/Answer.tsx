@@ -2,10 +2,12 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Text, View} from 'react-native';
 
-export const Question = () => {
+export const Answer = ({mcq}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.question}>Sample question</Text>
+      <Text style={styles.question}>
+        {JSON.stringify(mcq).split('"').join('')}
+      </Text>
     </View>
   );
 };

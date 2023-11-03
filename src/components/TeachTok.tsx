@@ -1,10 +1,11 @@
 import React from 'react';
 import {TopHeader} from '../components/TopHeader';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {Question} from '../components/Question';
+import {Answer} from './Answer';
 import {ActionButtons} from '../components/ActionButtons';
+import mcq from '../data/mcq';
 
-export const TeachTock = () => {
+export const TeachTock = ({prop}) => {
   return (
     <ImageBackground
       resizeMode="cover"
@@ -23,8 +24,7 @@ export const TeachTock = () => {
                 color: 'white',
                 backgroundColor: 'rgba(0,0,0,0.8)',
               }}>
-              The Question
-              {/* {JSON.stringify(data.question)} */}
+              {prop.question}
             </Text>
           </View>
           {/* {isLoading ? (
@@ -58,9 +58,11 @@ export const TeachTock = () => {
               }}>
               <View>
                 <View>
-                  <Question />
-                  <Question />
-                  <Question />
+                  {/* <Text>{prop.options ? prop.options.map((x)=><Text></Text>) 'not avaible'}</Text> */}
+
+                  <Answer mcq={prop.options[0].answer} />
+                  <Answer mcq={prop.options[1].answer} />
+                  <Answer mcq={prop.options[2].answer} />
                 </View>
               </View>
               <View>
