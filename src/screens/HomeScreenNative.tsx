@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {TopHeader} from '../components/TopHeader';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {Question} from '../components/Question';
-import {ActionButtons} from '../components/ActionButtons';
+import {Dimensions, FlatList, Text, View} from 'react-native';
+import {TeachTock} from '../components/TeachTok';
 
 export const HomeScreenNative = () => {
   // const [isLoading, setLoading] = useState(true);
@@ -29,95 +27,23 @@ export const HomeScreenNative = () => {
     getTeachToks();
   }, []);
 
+  // return <>{isLoading ? <Text>Loading</Text> : <TeachTock />}</>;
   return (
-    <ImageBackground
-      resizeMode="cover"
-      style={styles.image}
-      source={require('../../assets/ferry.png')}>
-      <View style={styles.container}>
-        <View style={styles.top}>
-          <TopHeader />
-        </View>
-
-        <View style={styles.middle}>
-          {isLoading ? (
-            <Text style={{fontSize: 24}}>Loading</Text>
-          ) : (
-            <View style={{flex: 0.5}}>
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: 'white',
-                  backgroundColor: 'rgba(0,0,0,0.8)',
-                }}>
-                {JSON.stringify(data.question)}
-              </Text>
+    <View style={{flex: 1}}>
+      {isLoading ? (
+        <Text>Loading</Text>
+      ) : (
+        <FlatList
+          contentContainerStyle={{flexGrow: 1}}
+          data={[{id: 'dog'}, {id: 'dogs'}]}
+          keyExtractor={({id}) => id}
+          renderItem={({item}) => (
+            <View style={{flex: 1, height: Dimensions.get('window').height}}>
+              <TeachTock />
             </View>
           )}
-        </View>
-
-        <View style={styles.bottom}>
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            <View
-              style={{
-                flexDirection: 'column',
-                flex: 0.8,
-                justifyContent: 'space-around',
-              }}>
-              <View>
-                <View>
-                  <Question />
-                  <Question />
-                  <Question />
-                </View>
-              </View>
-              <View>
-                <Text style={{color: 'white'}}>AP US History</Text>
-                <Text style={{color: 'white'}}>5.5 section</Text>
-              </View>
-            </View>
-
-            <View style={{flexDirection: 'column', flex: 0.2}}>
-              <ActionButtons />
-            </View>
-          </View>
-
-          <View>
-            <Text style={{padding: 20, color: 'white'}}>
-              Playlist.Uni5:eriod 6:1865-1898
-            </Text>
-          </View>
-        </View>
-      </View>
-    </ImageBackground>
+        />
+      )}
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  image: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  top: {
-    flex: 0.1,
-  },
-  middle: {
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    flex: 0.3,
-  },
-  bottom: {
-    flex: 0.6,
-    justifyContent: 'space-between',
-    backgroundColor: 'rgba(0,0,0,.2)',
-  },
-});
