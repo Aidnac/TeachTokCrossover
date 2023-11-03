@@ -41,11 +41,18 @@ export const HomeScreenNative = () => {
 
         <View style={styles.middle}>
           {isLoading ? (
-            <Text style={{fontSize: 30}}>Loading</Text>
+            <Text style={{fontSize: 24}}>Loading</Text>
           ) : (
-            <Text style={{fontSize: 30}}>
-              {JSON.stringify(data.options[0].id)}
-            </Text>
+            <View style={{flex: 0.5}}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  color: 'white',
+                  backgroundColor: 'rgba(0,0,0,0.8)',
+                }}>
+                {JSON.stringify(data.question)}
+              </Text>
+            </View>
           )}
         </View>
 
@@ -70,7 +77,8 @@ export const HomeScreenNative = () => {
                 </View>
               </View>
               <View>
-                <Text>AP US History</Text>
+                <Text style={{color: 'white'}}>AP US History</Text>
+                <Text style={{color: 'white'}}>5.5 section</Text>
               </View>
             </View>
 
@@ -80,7 +88,9 @@ export const HomeScreenNative = () => {
           </View>
 
           <View>
-            <Text style={{padding: 20}}>Playlist.Uni5:eriod 6:1865-1898</Text>
+            <Text style={{padding: 20, color: 'white'}}>
+              Playlist.Uni5:eriod 6:1865-1898
+            </Text>
           </View>
         </View>
       </View>
@@ -108,5 +118,6 @@ const styles = StyleSheet.create({
   bottom: {
     flex: 0.6,
     justifyContent: 'space-between',
+    backgroundColor: 'rgba(0,0,0,.2)',
   },
 });
